@@ -3,8 +3,4 @@
     <NuxtPage></NuxtPage>
   </NuxtLayout>
 </template>
-<style lang="scss">
-.wrapper {
-  @include border(yellow);
-}
-</style>
+<style lang="scss"></style>

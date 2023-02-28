@@ -1,12 +1,10 @@
 <template>
-  <div class="bg-black">
-    <div class="bg-black w-5 h-5"></div>
-    <ElButton>123</ElButton>
+  <div>
+    <DlHomeSection1></DlHomeSection1>
+    <DlHomeSection2></DlHomeSection2>
   </div>
 </template>
 
-<script setup lang="ts">
-import { ElButton } from 'element-plus'
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>
