@@ -26,15 +26,15 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'nuxt cli',
+      title: '鼎朗互娱|为内容创作者提供超预期内容变现服务',
       meta: [
         {
           name: 'description',
-          content: 'nuxt cli'
+          content: '鼎朗互娱'
         },
         {
           name: 'keywords',
-          content: 'nuxt cli'
+          content: '鼎朗互娱'
         },
         {
           name: 'viewport',
@@ -45,5 +45,5 @@ export default defineNuxtConfig({
       noscript: [{ children: 'Javascript is required' }]
     }
   },
-  modules: ['@pinia/nuxt']
+  modules: ['@pinia/nuxt', '@vueuse/nuxt']
 })

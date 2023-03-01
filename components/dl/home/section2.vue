@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="wrapper">
     <div ref="myMap" id="myMap" style="width: 300px; height: 300px"></div>
   </section>
 </template>

@@ -2,6 +2,10 @@
   <div class="page-not-found">page not found</div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({
+  layout: 'empty-layout'
+})
+</script>
 
 <style scoped></style>
