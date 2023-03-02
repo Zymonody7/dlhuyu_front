@@ -1,3 +1,5 @@
 export default defineEventHandler((event) => {
-  return 'abn'
+  console.log(event)
+
+  return 123
 })

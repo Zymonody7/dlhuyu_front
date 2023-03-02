@@ -51,6 +51,7 @@ onMounted(() => {
 }
 .logo {
   font-family: DLHuYu;
+  color: $primaryColor;
   @apply text-4xl font-semibold cursor-default opacity-0;
   text-decoration: none;
   animation: slideRight 1s ease forwards;

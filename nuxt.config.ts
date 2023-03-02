@@ -1,6 +1,20 @@
 import ElementPlus from 'unplugin-element-plus/vite'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  nitro: {
+    storage: {
+      redis: {
+        driver: 'redis',
+        /* redis connector options */
+        port: 6379, // Redis port
+        host: '127.0.0.1', // Redis host
+        username: '', // needs Redis >= 6
+        password: '',
+        db: 0, // Defaults to 0
+        tls: {} // tls/ssl
+      }
+    }
+  },
   postcss: {
     plugins: {
       'postcss-import': {},
@@ -9,9 +23,13 @@ export default defineNuxtConfig({
       autoprefixer: {}
     }
   },
-  css: ['normalize.css', '@/assets/css/global.scss', '@/assets/css/tailwind.css'],
+  css: [
+    'normalize.css',
+    '@/assets/css/global.scss',
+    '@/assets/css/tailwind.css',
+    'element-plus/dist/index.css'
+  ],
   build: {
-    // 在开发环境dev、生产环境pro使用babel进行语法转换
     transpile: ['element-plus/es']
   },
   vite: {
