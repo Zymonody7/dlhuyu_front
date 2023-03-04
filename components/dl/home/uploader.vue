@@ -15,7 +15,7 @@
       >
         <img :src="item.avatar" class="img" />
         <div class="name">{{ item.name }}</div>
-        <div class="mt-4 rounded-full bg-blue-400">
+        <div class="tag">
           {{ item.tag }}
         </div>
         <div class="fans" v-if="isActive(index)">
@@ -138,6 +138,11 @@ onMounted(() => {
     }
     .name {
       @apply text-xl font-bold mt-6;
+    }
+    .tag {
+      @apply mt-4 rounded-full px-4 text-white drop-shadow-lg;
+      background-color: rgba($color: $secondaryColor, $alpha: 0.8);
+      box-shadow: 0 0 4px $secondaryColor;
     }
     .fans {
       @apply text-gray-500 text-lg mt-4;

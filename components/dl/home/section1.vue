@@ -16,7 +16,7 @@
         >开始推广</NuxtLink
       >
     </div>
-    <div class="item2"></div>
+    <!-- <div class="item2"></div> -->
   </section>
 </template>
 
@@ -81,6 +81,11 @@
       animation: slideTop 1s ease forwards;
       animation-delay: 1s;
     }
+  }
+  .item2 {
+    @apply absolute left-0 bottom-0 w-full h-32 text-black;
+    background-color: rgba($color: $secondaryColor, $alpha: 0.05);
+    backdrop-filter: blur(10px);
   }
 }
 @keyframes fontTransition {

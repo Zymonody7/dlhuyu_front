@@ -10,7 +10,7 @@
       <NuxtLink style="--i: 2" to="/">营销产品</NuxtLink>
       <NuxtLink style="--i: 3" to="/about">关于</NuxtLink>
     </div>
-    <div class="">123</div>
+    <div class="login">登录</div>
   </header>
 </template>
 
@@ -73,6 +73,23 @@ onMounted(() => {
       border-bottom: 4px solid $secondaryColor;
       border-bottom-right-radius: 8px;
     }
+  }
+}
+.login {
+  @apply px-5 py-1 text-white rounded-md cursor-pointer;
+  background-color: $secondaryColor;
+  /* animation: btn 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards; */
+  &:hover {
+    background-color: rgba($color: $primaryColor, $alpha: 0.8);
+  }
+  transition: all 0.6s;
+}
+@keyframes btn {
+  0% {
+    background-color: $primaryColor;
+  }
+  100% {
+    background-color: $secondaryColor;
   }
 }
 </style>

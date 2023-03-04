@@ -3,6 +3,7 @@
     <DlHomeSection1></DlHomeSection1>
     <LazyDlHomeSection2 ref="section2" v-if="section2IsVisible"></LazyDlHomeSection2>
     <LazyDlHomeUploader v-if="uploaderIsVisible"></LazyDlHomeUploader>
+    <LazyDlHomeTeam></LazyDlHomeTeam>
     <!-- <div v-else style="height: 600px" ref="uploader"></div> -->
   </div>
 </template>
