@@ -1,5 +1,6 @@
 import ElementPlus from 'unplugin-element-plus/vite'
 // https://nuxt.com/docs/api/configuration/nuxt-config
+const lifecycle = process.env.npm_lifecycle_event
 export default defineNuxtConfig({
   nitro: {
     storage: {
@@ -30,7 +31,7 @@ export default defineNuxtConfig({
     'element-plus/dist/index.css'
   ],
   build: {
-    transpile: ['element-plus/es']
+    transpile: lifecycle === 'build' ? ['element-plus'] : []
   },
   vite: {
     css: {

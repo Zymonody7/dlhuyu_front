@@ -1,52 +1,94 @@
 <template>
-  <header class="header" :class="{ header_white }" ref="header">
+  <header class="header" :class="{ 'header-white': headerWhite }" ref="header">
     <a href="#" class="logo">
       <!-- <image src="@/assets/images/logo.png"></image> -->
       鼎朗互娱
     </a>
     <div class="navbar">
-      <NuxtLink style="--i: 1.5" to="/">首页</NuxtLink>
-      <NuxtLink style="--i: 1" to="/">解决方案</NuxtLink>
-      <NuxtLink style="--i: 2" to="/">营销产品</NuxtLink>
-      <NuxtLink style="--i: 3" to="/about">关于</NuxtLink>
+      <NuxtLink
+        v-for="(item, index) in headerList"
+        :style="{ '--i': index }"
+        :to="item.nav"
+        @mouseover="handleHover"
+        @mouseout="handleUnHover"
+        >{{ item.title }}</NuxtLink
+      >
     </div>
-    <div class="login">登录</div>
+    <NuxtLink class="login" to="/login">登录</NuxtLink>
   </header>
+  <div class="dropdown" :class="{ active: isShowDropdown }"></div>
 </template>
 
 <script setup lang="ts">
-interface IProps {
-  title: string
-}
-
-const props = withDefaults(defineProps<IProps>(), {
-  title: ''
-})
+// 通过滚动使背景变白
 const header = ref<HTMLHeadElement>()
-// watch(header, () => {
-//   console.log()
-// })
-const header_white = ref(false)
+const headerWhite = ref(false)
 const handleScroll = () => {
   const top = document.documentElement.scrollTop
   if (top > 50) {
-    header_white.value = true
+    headerWhite.value = true
   } else {
-    header_white.value = false
+    headerWhite.value = false
   }
 }
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
+// 通过hover使背景变白
+const isShowDropdown = ref(false)
+const handleHover = () => {
+  headerWhite.value = true
+  isShowDropdown.value = true
+}
+const handleUnHover = () => {
+  headerWhite.value = false
+  isShowDropdown.value = false
+}
+
+// headerItem列表
+const headerList: headerType[] = [
+  {
+    id: '1',
+    title: '首页',
+    nav: '/'
+  },
+  {
+    id: '2',
+    title: '解决方案',
+    nav: '/'
+  },
+  {
+    id: '3',
+    title: '营销产品',
+    nav: '/',
+    children: [
+      {
+        id: '3-1',
+        title: '营销产品1',
+        nav: '/'
+      },
+      {
+        id: '3-2',
+        title: '营销产品2',
+        nav: '/'
+      }
+    ]
+  },
+  {
+    id: '4',
+    title: '关于',
+    nav: '/about'
+  }
+]
 </script>
 
 <style scoped lang="scss">
 .header {
-  @apply fixed top-0 left-0 w-screen py-5 px-[10%] flex justify-between items-center z-[100] text-black bg-transparent overflow-hidden;
+  @apply fixed w-screen top-0 left-0 py-5 px-[10%] flex items-center z-50 text-black bg-transparent overflow-hidden;
   backdrop-filter: blur(8px);
   transition: background-color 0.3s;
 }
-.header_white {
+.header-white {
   @apply bg-white text-gray-700;
 }
 .logo {
@@ -57,6 +99,8 @@ onMounted(() => {
   animation: slideRight 1s ease forwards;
 }
 .navbar {
+  flex: 1;
+  margin-left: 120px;
   a {
     @apply inline-block font-medium ml-9 opacity-0;
     font-size: 18px;
@@ -78,11 +122,21 @@ onMounted(() => {
 .login {
   @apply px-5 py-1 text-white rounded-md cursor-pointer;
   background-color: $secondaryColor;
+  transition: all 0.5s;
   /* animation: btn 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) forwards; */
   &:hover {
-    background-color: rgba($color: $primaryColor, $alpha: 0.8);
+    background-color: rgba($color: $secondaryColor, $alpha: 0.7);
+    @apply shadow-lg;
   }
   transition: all 0.6s;
+}
+
+.dropdown {
+  @apply w-full h-0 fixed top-16 z-50 bg-transparent;
+  transition: all 0.3s;
+  &.active {
+    @apply h-40 bg-white;
+  }
 }
 @keyframes btn {
   0% {
